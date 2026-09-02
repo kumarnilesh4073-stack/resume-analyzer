@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analysis Result</title>
+</head>
+
+<body>
+
+    <h1>Resume Analysis Result</h1>
+
+    <h2>Resume Score: {{ score }}%</h2>
+
+    <div style="width: 300px; height: 30px; background: lightgray;">
+        <div style="width: {{ score }}%; height: 30px; background: green;">
+        </div>
+    </div>
+
+    <h3>File: {{ filename }}</h3>
+
+    <h2>Skills Found:</h2>
+
+    {% if skills %}
+        <ul>
+            {% for skill in skills %}
+                <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No matching skills found.</p>
+    {% endif %}
+
+    <br>
+
+    <a href="/">Analyze Another Resume</a>
+
+</body>
+</html>
