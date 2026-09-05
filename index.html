@@ -1,23 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>AI Resume Analyzer</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="file"],
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 14px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+    </style>
+
 </head>
+
 <body>
+
+<div class="container">
 
     <h1>AI Resume Analyzer</h1>
 
-    <p>Upload your resume and check your skills score.</p>
+    <form action="/analyze"
+          method="POST"
+          enctype="multipart/form-data">
 
-    <form action="/analyze" method="POST" enctype="multipart/form-data">
+        <label>
+            Upload Resume (PDF)
+        </label>
 
-        <input type="file" name="resume" accept=".pdf" required>
+        <input
+            type="file"
+            name="resume"
+            accept=".pdf"
+            required
+        >
 
-        <br><br>
+        <label>
+            Job Description
+        </label>
 
-        <button type="submit">Analyze Resume</button>
+        <textarea
+            name="job_description"
+            placeholder="Paste the job description here..."
+        ></textarea>
+
+        <button type="submit">
+            Analyze Resume
+        </button>
 
     </form>
 
+</div>
+
 </body>
+
 </html>
