@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #64748b;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .upload-box {
+            border: 2px dashed #94a3b8;
+            border-radius: 15px;
+            padding: 35px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            background: #f8fafc;
+        }
+
+        .upload-box h2 {
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .upload-box p {
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            background: white;
+        }
+
+        .analyze-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .analyze-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 12px;
+            background: #f1f5f9;
+        }
+
+        .result h2 {
+            color: #2563eb;
+        }
+
+        .score {
+            font-size: 40px;
+            font-weight: bold;
+            color: #16a34a;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .result-box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 12px;
+        }
+
+        .result-box h3 {
+            color: #334155;
+            margin-top: 0;
+        }
+
+        .result-box p {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #b91c1c;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🤖 AI Resume Analyzer</h1>
+        <p>Upload your resume and get an instant AI-powered analysis.</p>
+    </div>
+
+    <div class="card">
+
+        <form action="/analyze" method="POST" enctype="multipart/form-data">
+
+            <div class="upload-box">
+
+                <h2>Upload Your Resume</h2>
+
+                <p>
+                    Supported formats: PDF, DOC, DOCX
+                </p>
+
+                <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf,.doc,.docx"
+                    required
+                >
+
+            </div>
+
+            <button type="submit" class="analyze-btn">
+                Analyze Resume
+            </button>
+
+        </form>
+
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+
+        {% if result %}
+
+        <div class="result">
+
+            <h2>Resume Analysis Result</h2>
+
+            {% if score %}
+            <div class="score">
+                {{ score }}%
+            </div>
+            {% endif %}
+
+
+            {% if result.summary %}
+            <div class="result-box">
+                <h3>📋 Summary</h3>
+                <p>{{ result.summary }}</p>
+            </div>
+            {% endif %}
+
+
+            {% if result.skills %}
+            <div class="result-box">
+                <h3>💡 Skills</h3>
+                <p>{{ result.skills }}</p>
+            </div>
+            {% endif %}
+
+
+            {% if result.strengths %}
+            <div class="result-box">
+                <h3>✅ Strengths</h3>
+                <p>{{ result.strengths }}</p>
+            </div>
+            {% endif %}
+
+
+            {% if result.weaknesses %}
+            <div class="result-box">
+                <h3>⚠️ Weaknesses</h3>
+                <p>{{ result.weaknesses }}</p>
+            </div>
+            {% endif %}
+
+
+            {% if result.suggestions %}
+            <div class="result-box">
+                <h3>🚀 Suggestions</h3>
+                <p>{{ result.suggestions }}</p>
+            </div>
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <div class="footer">
+        AI Resume Analyzer © 2026
+    </div>
+
+</div>
+
+</body>
+</html>
