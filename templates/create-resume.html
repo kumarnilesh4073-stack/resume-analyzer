@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create AI Resume</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #4f46e5;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>✨ Create AI Resume</h1>
+
+        <form action="/create-resume" method="POST">
+
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+
+            <label>Email</label>
+            <input type="email" name="email" required>
+
+            <label>Phone</label>
+            <input type="text" name="phone">
+
+            <label>Career Objective</label>
+            <textarea name="objective"></textarea>
+
+            <label>Education</label>
+            <textarea name="education"></textarea>
+
+            <label>Skills</label>
+            <textarea name="skills"></textarea>
+
+            <label>Experience</label>
+            <textarea name="experience"></textarea>
+
+            <label>Projects</label>
+            <textarea name="projects"></textarea>
+
+            <label>Certifications</label>
+            <textarea name="certifications"></textarea>
+
+            <button type="submit">
+                ✨ Generate Resume
+            </button>
+
+        </form>
+
+        <a href="/">
+            ← Back to AI Resume Analyzer
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
